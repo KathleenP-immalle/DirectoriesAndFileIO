@@ -8,7 +8,7 @@ i.v.m. MSTest:
 
 - Welke Assert-methods worden naast `Assert.AreEqual` nog allemaal gebruikt?
 
-> Mijn antwoord
+> Assert.False, Assert.Equals, Assert.True
 
 - Waarom heeft `TestDirectories` een `Initialize`- en `CleanUp`-method?
 - Zijn de attributen `[TestMethod]`, `[TestClass]`, ... noodzakelijk? (Test uit!)
@@ -27,5 +27,3 @@ i.v.m. duidelijkheid/geschiedenis van de code:
 - Wat lost commit d0320b6a op?
 - Wat is het probleem met de files in commit 9d184949?
 - Wat doet commit 9b3e4065? Maakt dit de code makkelijker leesbaar? Makkelijker uitbreidbaar?
-
-

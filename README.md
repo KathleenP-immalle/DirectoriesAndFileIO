@@ -11,14 +11,29 @@ i.v.m. MSTest:
 > Assert.False, Assert.Equals, Assert.True
 
 - Waarom heeft `TestDirectories` een `Initialize`- en `CleanUp`-method?
+
+> Om er zeker van te zijn dat de testfile verwijderd is en je volledig opnieuw kan beginnen.
+
 - Zijn de attributen `[TestMethod]`, `[TestClass]`, ... noodzakelijk? (Test uit!)
+
+> nee?
+
 - Wat is de shortcut om alle tests uit te voeren in VS?
+
+>Ctrl+R, A
 
 i.v.m. Files en Directories:
 
 - Wat is het voordeel van `Path.Combine` i.v.m. strings aan elkaar plakken?
+
+> Het plaatst "\" tussen de delen.
+ 
 - Wordt de return-waarde van `Directory.CreateDirectory(...)` steeds opgevangen? (TIP: gebruik `CTRL-SHIFT-F`)
+
 - Wat is de return-waarde van `Directory.CreateDirectory(...)`?
+
+> een string (path)
+
 - Wanneer is het nuttig om de return-waarde van `Directory.CreateDirectory(...)` op te vangen?
 
 i.v.m. duidelijkheid/geschiedenis van de code:

@@ -39,6 +39,13 @@ i.v.m. Files en Directories:
 i.v.m. duidelijkheid/geschiedenis van de code:
 
 - Lukken de testen in de commit 3ffe2c86? Waarom (niet)?
+
+>Nee, er is een fout in de Assert.AreEqual method.
+
 - Wat lost commit d0320b6a op?
+
+> Het draait de meegegeven strings in de Assert.AreEqual method om.
+
 - Wat is het probleem met de files in commit 9d184949?
+> 
 - Wat doet commit 9b3e4065? Maakt dit de code makkelijker leesbaar? Makkelijker uitbreidbaar?

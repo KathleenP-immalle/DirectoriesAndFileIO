@@ -26,7 +26,7 @@ namespace DirectoriesAndFileIO
             subDir = Path.Combine(testDir, "subDir");
             subDirFile = Path.Combine(subDir, subDirFile);
             fileAContents = "This is a.txt.";
-            fileBContents = "This is b.txt.";
+            fileBContents = "This is b.txt.\nNog een lijn text.";
             subDirFileContents = "This is a file in a sub-directory.";
 
             Directory.CreateDirectory(testDir);
@@ -47,17 +47,28 @@ namespace DirectoriesAndFileIO
         [TestMethod]
         public void TestFileReadAllText()
         {
-            string txt = File.ReadAllText(fileA);
-            Assert.AreEqual(fileAContents, txt);
+            string txtA = File.ReadAllText(fileA);
+            Assert.AreEqual(fileAContents, txtA);
+
+            string txtB = File.ReadAllText(fileB);
+            Assert.AreEqual(fileBContents, txtB);
         }
 
         [TestMethod]
         public void TestReadAllLines()
         {
-            string[] lines = File.ReadAllLines(fileA);
+            string[] linesA = File.ReadAllLines(fileA);
 
-            Assert.AreEqual(1, lines.Length);
-            Assert.AreEqual(fileAContents, lines[0]);
+            Assert.AreEqual(1, linesA.Length);
+            Assert.AreEqual(fileAContents, linesA[0]);
+
+            string[] linesB = File.ReadAllLines(fileB);
+
+            string[]ContentsB = fileBContents.Split('\n');
+
+            Assert.AreEqual(2, linesB.Length);
+            Assert.AreEqual(ContentsB[0], linesB[0]);
+            Assert.AreEqual(ContentsB[1], linesB[1]);
         }
 
         [TestMethod]

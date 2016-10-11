@@ -26,7 +26,7 @@ namespace DirectoriesAndFileIO
             subDir = Path.Combine(testDir, "subDir");
             subDirFile = Path.Combine(subDir, subDirFile);
             fileAContents = "This is a.txt.";
-            fileBContents = "This is b.txt.";
+            fileBContents = "This is b.txt.\nNog een lijn text.";
             subDirFileContents = "This is a file in a sub-directory.";
 
             Directory.CreateDirectory(testDir);
@@ -40,24 +40,35 @@ namespace DirectoriesAndFileIO
         {
             if (Directory.Exists(testDir))
             {
-                Directory.Delete(testDir, true);
+                Directory.Delete(testDir, recursive: true);
             }
         }
 
         [TestMethod]
         public void TestFileReadAllText()
         {
-            string txt = File.ReadAllText(fileA);
-            Assert.AreEqual(fileAContents, txt);
+            string txtA = File.ReadAllText(fileA);
+            Assert.AreEqual(fileAContents, txtA);
+
+            string txtB = File.ReadAllText(fileB);
+            Assert.AreEqual(fileBContents, txtB);
         }
 
         [TestMethod]
         public void TestReadAllLines()
         {
-            string[] lines = File.ReadAllLines(fileA);
+            string[] linesA = File.ReadAllLines(fileA);
 
-            Assert.AreEqual(1, lines.Length);
-            Assert.AreEqual(fileAContents, lines[0]);
+            Assert.AreEqual(1, linesA.Length);
+            Assert.AreEqual(fileAContents, linesA[0]);
+
+            string[] linesB = File.ReadAllLines(fileB);
+
+            string[]ContentsB = fileBContents.Split('\n');
+
+            Assert.AreEqual(2, linesB.Length);
+            Assert.AreEqual(ContentsB[0], linesB[0]);
+            Assert.AreEqual(ContentsB[1], linesB[1]);
         }
 
         [TestMethod]
@@ -74,15 +85,15 @@ namespace DirectoriesAndFileIO
         [TestMethod]
         public void TestFileStream()
         {
-            byte[] data = new byte[20];
+            byte[] data = new byte[20]; // we choose 20 bytes because that's more than enough for what we choose as fileAContents, all bytes will be initialized to 0
 
             FileStream stream = File.OpenRead(fileA);
-            int r = stream.Read(data, 0, 20);
+            int r = stream.Read(data, 0, 20); // we read 20 bytes or less if the stream is finished
 
             string txt = "";
             foreach(byte b in data)
             {
-                if(b != 0)
+                if(b != 0) // the last bytes of the array will still be 0
                 {
                     txt += (char)b;
                 }
